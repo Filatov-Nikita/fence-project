@@ -12,11 +12,8 @@
 */
 
 
-Route::group(['domain' => '{city}.superproject.loc'], function () {
-    Route::get('/', function ($city) {
-        return $city;
-    });
-});
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['domain' => '{city}.local'], function () {
+    Route::get('/', 'MainController@index')->name('index');
+    Route::get('/admin', 'MainController@admin');
+    Route::post('/admin', 'MainController@adminPost');
 });
